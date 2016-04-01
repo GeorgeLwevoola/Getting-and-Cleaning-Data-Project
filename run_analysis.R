@@ -56,8 +56,9 @@ xy_df <-merge(x=activity_df,y=xy_subject_final_df, by="ID", All=FALSE)
 
 ## From the data set above, creates a second, independent tidy data set 
 ## with the average of each variable for each activity and each subject.
-  colformean <- names(rfinal_df)[3:14]
+
   library(dplyr)
   mydt <- group_by(rfinal_df,SUBJECT,ACTIVITY)
   mydt2 <-summarize_each(mydt,funs(mean))
+  write.table(mydt2, "mydt2.txt", row.names=FALSE)
 
